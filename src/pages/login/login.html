@@ -1,0 +1,34 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Welcome</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form  role="form" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" novalidate>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Email Address</ion-label>
+      <ion-input type="text" name="email" [(ngModel)]="details.email" #email="ngModel" required></ion-input>
+    </ion-item>
+    <small translate [hidden]="email.valid || (!email.touched && !loginForm.submitted)" class="text-danger">
+      Email is required
+    </small>
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" name="password" [(ngModel)]="details.password" #password="ngModel" required></ion-input>
+    </ion-item>
+    <small translate [hidden]="password.valid || (!password.touched && !loginForm.submitted)" class="text-danger">
+      Password is required
+    </small>
+  </ion-list>
+  <div padding>
+    <button block type="submit">Sign In</button>
+    <button block (click)="goToRegister()">Register</button>
+  </div>
+  </form>
+
+</ion-content>
