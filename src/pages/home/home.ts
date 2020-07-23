@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HomeService } from './home.service';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-home',
@@ -22,9 +23,13 @@ export class HomePage {
 
   fetchProfile() {
     this.homeService.fetchProfileData().subscribe((res: any) => {
-      console.log(res);
       this.details = res.data.userData;
     })
+  }
+
+  logout() {
+    localStorage.removeItem('authData');
+    this.navCtrl.setRoot(LoginPage);
   }
 
 }

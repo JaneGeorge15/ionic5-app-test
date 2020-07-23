@@ -1,12 +1,10 @@
 import { Subject, BehaviorSubject } from 'rxjs';
-import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class AuthHelper {
     constructor(
-        private router: Router,
         private location: Location,
     ) {
         this.getAuthUser();
@@ -69,6 +67,5 @@ export class AuthHelper {
     logout() {
         localStorage.removeItem('authData');
         this.location.replaceState('/'); // clears browser history so they can't navigate with back button
-        this.router.navigate(['/login']);
     }
 }
